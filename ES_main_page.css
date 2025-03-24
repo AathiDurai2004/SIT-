@@ -1,0 +1,172 @@
+body{
+    overflow: hidden;
+}
+/* Header */
+#hdr {
+    padding: 3%;
+    background-color: #534694;
+    display: flex;
+    height: 10vh;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Title */
+#title {
+    font-size: 4rem;
+    text-align: center;
+    color: white;
+    font-family: 'Trebuchet MS', sans-serif;
+}
+
+/* Main Layout */
+main {
+    display: flex;
+    height: calc(100vh - 24vh); /* Full screen minus header */
+}
+
+/* Sidebar Navigation */
+
+#nav {
+    display: grid;
+    grid-template-columns: repeat(3, auto); /* 3 buttons per row */
+    grid-auto-rows: 50px; /* Fix row height */
+    gap: 3px; /* Reduce spacing between buttons */
+    width: fit-content; /* Adjust width to fit buttons */
+    background-color: #f2f2f2;
+    padding: 5px; /* Keep minimal padding */
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+input[type="radio"] {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #534694;
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+    background-color: white;
+    cursor: pointer;
+}
+
+input[type="radio"]::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    background-color: transparent; /* Initially transparent */
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+input[type="radio"]:checked::before {
+    background-color: #534694; /* Inner dot appears when selected */
+}
+label{
+    padding: 1px;
+}
+
+/* Buttons inside Nav */
+button { 
+    width: 50px;
+    height: 50px;
+    border: 1px solid blue;
+    border-radius:50%;
+    margin: 0; 
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+
+
+button:hover {
+    background-color: #534694;
+    color: white;
+}
+
+/* Main Content Section */
+#workframe {
+    width: 70%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+
+/* Question & Options */
+#qnopt {
+    width: 96%;
+    background-color: aliceblue;
+    padding: 2%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    flex-grow: 1;
+}
+
+/* Question Text */
+#qn {
+    font-size: 1.5rem;
+}
+
+/* Options */
+#opts {
+    font-size: 1.15rem;
+}
+
+/* Buttons Section */
+#btns {
+    display: flex;
+    justify-content: space-evenly;
+    background-color: aliceblue;
+    padding: 10px;
+    margin-top: auto; /* Pushes to the bottom */
+}
+#mr,#cr{
+    background-color: #4a95e1;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    padding: 15px 30px;
+}
+.c_btn{
+    height: 40px;
+    width: 40px;
+    padding: 15px 0px 15px 0px;
+    border: none;
+    border-radius: 50%;
+    cursor:pointer;
+    transition: 0.2s;
+    box-shadow: 0 4x 8px rgba(0,0,0.2);
+}
+.c_btn:hover{
+    transform: scale(1.1);
+}
+#prv{
+    background: url(prev.jpg);
+}
+#nxt{
+    background: url(next.jpg);
+}
+#mr:hover{
+    transform: scale(0.9);
+    transition: 0.2s;
+    border: hidden;
+}
+#cr:hover{
+    transform: scale(0.9);
+    transition: 0.2s;
+    border:hidden;
+}
+.selected-number {
+    font-size: 1.7em;
+    font-weight: bold;
+    transition: font-size 0.3s ease-in-out;
+}
