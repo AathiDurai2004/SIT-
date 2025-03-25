@@ -1,0 +1,75 @@
+/* Body background color */
+        body {
+            background-color: #534694;
+            color: white; /* Text color for contrast */
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* First header with black background */
+        header {
+            background-color: black;
+            color: white;
+            text-align: left;
+            padding: 0.5px;
+        }
+
+        /* Second header with light gray background */
+        .second-header {
+            background-color: #f1f1f1;
+            color: black;
+            text-align: left;
+            padding: 3px 10px;
+            font-family: 'Trebuchet MS', sans-serif;
+        }
+
+        /* Card style */
+        .card {
+            width: 300px;
+            margin: 20px;
+            padding: 20px;
+            background-color:#007BFF;
+            color: black;
+            border: 2px solid #007BFF;
+            border-radius: 8px;
+            box-shadow: 0px 0px 5px 0px black ;
+        }
+
+        .card:hover{
+            transform: translateY(-5px);
+        }
+
+        /* Button inside the card */
+        .card a.button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 10px;
+            background-color:#f8f8f9;
+            color:#000000;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .card a.button:hover {
+            background-color: #5b4991;
+            color: white;
+            scale: 1.09;
+            transition-timing-function: ease-in-out;
+        }
+
+        /* Align card to the left */
+        .card-container {
+            display: inline-block;
+            justify-content: space-between;
+            padding: 60px 20px;
+
+        }
+        #es{
+            padding: 1px;
+            font-size: xx-large;
+            font-family: 'Trebuchet MS',  sans-serif;
+        }
