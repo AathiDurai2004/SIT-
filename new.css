@@ -1,0 +1,58 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #534694;
+}
+
+.page-title {
+    font-size: 36px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.card-container {
+    display: flex;
+    gap: 30px;
+}
+
+.user-card {
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 50px 50px 500px #ded7e9eb;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, background-color .2s ease-in-out, color 0.5s ease-in-out;
+}
+
+.student-card {
+    background-color: #2386e8; /* Blue for Student */
+    color: rgb(50, 42, 12);
+}
+
+.controller-card {
+    background-color: #ff9800; /* Orange for Controller */
+    color: rgb(50, 42, 12);
+}
+
+.student-card:hover {
+    background-color: #5326c5; /* Lighter Blue on Hover */
+    transform: scale(1.05);
+    color: white;
+}
+
+.controller-card:hover {
+    background-color: #e65100; /* Darker Orange on Hover */
+    transform: scale(1.05);
+    color: white;
+}
+
+.card-title {
+    font-size: 24px;
+    font-weight: bold;
+}
