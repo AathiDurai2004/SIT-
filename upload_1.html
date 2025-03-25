@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computer Systems Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #534694;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h2 {
+            text-align: center;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input[type="number"], input[type="file"] {
+            width: 100%;
+            padding: 10px 0px;
+            margin-bottom: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .result {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .file-upload {
+            margin-top: 20px;
+            text-align: center;
+            display: none; /* Initially hidden */
+        }
+        .file-upload input[type="file"] {
+            display: none;
+        }
+        .file-upload label {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #f39c12;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .file-upload label:hover {
+            background-color: #e67e22;
+        }
+        .file-info {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #555;
+        }
+        .loading {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .loading img {
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Computer Systems Needed</h2>
+        <label for="Total Systems">Total Systems</label>
+        <input type="number" id="Total Systems" placeholder="Enter total students" required>
+
+        <button onclick="calculateSystems()">Submit</button>
+
+        <div class="result" id="result"></div>
+
+        <!-- File Upload Section -->
+        <div class="file-upload" id="fileUploadSection">
+            <input type="file" id="fileUpload" onchange="handleFileUpload()" />
+            <label for="fileUpload">Upload File</label>
+            <div class="file-info" id="fileInfo"></div>
+        </div>
+
+        <!-- Loading Spinner -->
+        <div class="loading" id="loading">
+            <img src="https://www.w3schools.com/howto/img_spinner.gif" alt="Loading...">
+            <p>Uploading...</p>
+        </div>
+    </div>
+
+    <script>
+        function calculateSystems() {
+            // Get input values
+            const totalSystems = document.getElementById("Total Systems").value;
+
+            // Validate input
+            if (totalSystems === "" || totalSystems <= 0) {
+                document.getElementById("result").innerHTML = "Please enter valid inputs.";
+                return;
+            }
+
+            // Calculate the number of systems needed
+            const studentsPerSystem = 1; // You can modify this value as needed, or create another input for this
+            const systemsNeeded = Math.ceil(totalSystems / studentsPerSystem);
+
+            // Display the result
+            document.getElementById("result").innerHTML = `Number of computer systems required: ${systemsNeeded}`;
+
+            // Hide the initial input and button section
+            document.querySelector('label[for="Total Systems"]').style.display = 'none';
+            document.getElementById('Total Systems').style.display = 'none';
+            document.querySelector('button').style.display = 'none';
+            
+            // Show the file upload section
+            document.getElementById('fileUploadSection').style.display = 'block';
+        }
+
+        // Handle file upload
+        function handleFileUpload() {
+            const fileInput = document.getElementById('fileUpload');
+            const fileInfo = document.getElementById('fileInfo');
+            const loading = document.getElementById('loading');
+            const file = fileInput.files[0];
+
+            if (file) {
+                // Show loading spinner
+                loading.style.display = 'block';
+
+                // Simulate file upload with a delay
+                setTimeout(() => {
+                    // Hide the loading spinner after 3 seconds
+                    loading.style.display = 'none';
+
+                    // Display file info
+                    fileInfo.innerHTML = `Selected file: ${file.name} (${(file.size / 1024).toFixed(2)} KB)`;
+
+                    // Simulate sending the file to a backend API
+                    uploadFileToServer(file);
+                }, 3000);
+            } else {
+                fileInfo.innerHTML = 'No file selected.';
+            }
+        }
+
+        // Simulate file upload to a server
+        function uploadFileToServer(file) {
+            const formData = new FormData();
+            formData.append('file', file);
+
+            // Example of sending the file using fetch to a backend
+            fetch('http://localhost:3000/upload', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('File uploaded successfully', data);
+                alert('File uploaded successfully!');
+            })
+            .catch(error => {
+                console.error('Error uploading file:', error);
+                alert('Error uploading file.');
+            });
+        }
+    </script>
+
+</body>
+</html>
